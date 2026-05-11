@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Alessandra Fattori</title>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Jost:wght@200;300;400&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <div class="load-mask"></div>
+  <div class="grain"></div>
+  <div class="cursor" id="cursor"></div>
+  <div class="cursor-ring" id="cursorRing"></div>
+
+  <div class="top-strip">
+    <span class="top-name">Alessandra Fattori</span>
+  </div>
+
+  <div class="container">
+    <!-- Fashion -->
+    <a href="fashion/index.html" class="side fashion">
+      <div class="bg-shape"></div>
+      <div class="bg-shape bg-shape-2"></div>
+      <div class="hover-bar"></div>
+      <div class="side-content">
+        <span class="name-tag">Portfolio</span>
+        <h1>Moda</h1>
+        <span class="side-sub">Editoriale &amp; Misure</span>
+        <div class="arrow-cta">
+          <div class="arrow-line"></div>
+        </div>
+      </div>
+      <div class="corner-tag">Portfolio &amp; Contatti</div>
+    </a>
+
+    <div class="divider"></div>
+
+    <!-- Wellness -->
+    <a href="wellness/index.html" class="side wellness">
+      <div class="bg-shape"></div>
+      <div class="hover-bar"></div>
+      <div class="side-content">
+        <span class="name-tag">Studio</span>
+        <h1>Pilates &amp; Yoga</h1>
+        <span class="side-sub">Orari &amp; lezioni</span>
+        <div class="arrow-cta">
+          <div class="arrow-line"></div>
+        </div>
+      </div>
+      <div class="corner-tag">Lezioni di Pilates e Yoga <br> Informazioni &amp; Contatti</div>
+    </a>
+  </div>
+
+  <script>
+    const cursor = document.getElementById('cursor');
+    const ring = document.getElementById('cursorRing');
+    let mx = 0, my = 0, rx = 0, ry = 0;
+
+    // Check if device is touch-enabled
+    const isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+
+    if (!isTouchDevice) {
+      document.addEventListener('mousemove', e => {
+        mx = e.clientX;
+        my = e.clientY;
+        cursor.style.left = mx + 'px';
+        cursor.style.top = my + 'px';
+      });
+
+      function animateRing() {
+        rx += (mx - rx) * 0.12;
+        ry += (my - ry) * 0.12;
+        ring.style.left = rx + 'px';
+        ring.style.top = ry + 'px';
+        requestAnimationFrame(animateRing);
+      }
+      animateRing();
+
+      document.querySelectorAll('a').forEach(el => {
+        el.addEventListener('mouseenter', () => {
+          cursor.style.width = '20px';
+          cursor.style.height = '20px';
+          ring.style.width = '70px';
+          ring.style.height = '70px';
+        });
+        el.addEventListener('mouseleave', () => {
+          cursor.style.width = '10px';
+          cursor.style.height = '10px';
+          ring.style.width = '40px';
+          ring.style.height = '40px';
+        });
+      });
+    } else {
+      // Completely remove cursor elements if on mobile
+      cursor.style.display = 'none';
+      ring.style.display = 'none';
+    }
+  </script>
+</body>
+
+</html>

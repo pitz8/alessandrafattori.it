@@ -219,7 +219,7 @@
     .hero h1 {
         font-family: 'Cormorant Garamond', serif;
         font-weight: 300;
-        font-size: clamp(3.5rem, 8vw, 7rem);
+        font-size: 48px;
         letter-spacing: 10px;
         text-transform: uppercase;
         line-height: 1;

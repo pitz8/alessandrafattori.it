@@ -874,6 +874,12 @@
     }
 
     @media (max-width: 900px) {
+
+        .cursor,
+        .cursor-ring {
+            display: none;
+        }
+
         nav {
             padding: 1.2rem 2rem;
         }

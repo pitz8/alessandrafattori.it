@@ -494,14 +494,12 @@
 
     /* VIDEO / HERO img placeholder */
     .hero-img-placeholder {
-        width: 220px;
-        height: 310px;
-        background: var(--grey);
+        width: 80%;
+        background: transparent;
         display: flex;
         align-items: center;
         justify-content: center;
         margin: 2rem auto 0;
-        border: 1px solid var(--grey);
         font-size: 0.6rem;
         letter-spacing: 3px;
         color: var(--text-dim);

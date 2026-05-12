@@ -29,6 +29,30 @@
         cursor: none;
     }
 
+    .social-links {
+        display: flex;
+        gap: 1rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .social-link {
+        width: 50px;
+        height: 50px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-decoration: none;
+        font-size: 0.6rem;
+        letter-spacing: 1px;
+        color: var(--sage-light);
+        transition: background 0.3s, border-color 0.3s;
+    }
+
+    .social-link:hover {
+        background: rgba(200, 212, 194, 0.1);
+        border-color: var(--sage-light);
+    }
+
     /* Cursor */
     .cursor {
         position: fixed;
@@ -66,7 +90,7 @@
         display: flex;
         align-items: center;
         justify-content: space-between;
-        background: linear-gradient(to bottom, rgba(8, 8, 8, 0.95) 0%, transparent 100%);
+        background: var(--off-black);
         transition: background 0.4s;
     }
 
@@ -487,7 +511,7 @@
         animation: fadeUp 1s ease 0.9s both;
     }
 
-    .hero-img-placeholder img{
+    .hero-img-placeholder img {
         width: 100%;
         height: 100%;
         object-fit: cover;
@@ -524,7 +548,7 @@
         transition: background 0.3s;
     }
 
-    .client-item img{
+    .client-item img {
         width: 100%;
         height: auto;
         object-fit: contain;
@@ -625,6 +649,8 @@
         letter-spacing: 3px;
         text-transform: uppercase;
         color: var(--text-dim);
+        display: inline-flex;
+        align-items: center;
     }
 
     .spec-val {
@@ -710,6 +736,7 @@
 
     .form-group {
         position: relative;
+        margin-bottom: 1em;
     }
 
     .form-group label {
@@ -718,7 +745,6 @@
         letter-spacing: 3px;
         text-transform: uppercase;
         color: var(--text-dim);
-        margin-bottom: 0.5rem;
     }
 
     .form-group input,
@@ -881,5 +907,78 @@
         .gallery-item {
             grid-column: span 1 !important;
             grid-row: span 1 !important;
+        }
+    }
+
+    /* Hamburger Icon */
+    .nav-toggle {
+        display: none;
+        /* Hidden on desktop */
+        flex-direction: column;
+        gap: 6px;
+        cursor: pointer;
+        z-index: 1000;
+    }
+
+    .nav-toggle span {
+        display: block;
+        width: 25px;
+        height: 2px;
+        background: var(--gold);
+        transition: 0.3s;
+    }
+
+    .nav-links.active {
+        background-color: var(--grey);
+    }
+
+
+    /* Mobile Side Menu Logic */
+    @media (max-width: 900px) {
+        .nav-toggle {
+            display: flex;
+            /* Show on mobile */
+        }
+
+        .nav-links {
+            position: fixed;
+            top: 0;
+            right: -100%;
+            /* Hidden by default */
+            height: 100vh;
+            width: 70%;
+            /* Side menu width */
+            max-width: 300px;
+            background: var(--warm-white);
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            box-shadow: -10px 0 30px rgba(0, 0, 0, 0.05);
+            transition: 0.4s ease-in-out;
+            z-index: 999;
+        }
+
+        .nav-links.active {
+            right: 0;
+            /* Slide in */
+        }
+
+        /* Animate Hamburger to X */
+        .nav-toggle.open span:nth-child(1) {
+            transform: translateY(8px) rotate(45deg);
+        }
+
+        .nav-toggle.open span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .nav-toggle.open span:nth-child(3) {
+            transform: translateY(-8px) rotate(-45deg);
+        }
+
+        /* Ensure the "Back" link doesn't float weirdly on mobile */
+        .nav-back {
+            display: none;
+            /* Often cleaner to hide or move this inside the menu on mobile */
         }
     }

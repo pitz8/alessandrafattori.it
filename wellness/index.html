@@ -295,10 +295,11 @@
         result.innerHTML = "Invio...";
 
         const formData = new FormData(form);
+        formData.append('category', 'wellness');
 
         try {
 
-            const response = await fetch('send-mail.php', {
+            const response = await fetch('../send-mail.php', {
                 method: 'POST',
                 body: formData
             });

@@ -28,9 +28,9 @@ if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
 }
 
 // LOAD PHPMailer
-require '../PHPMailer/src/Exception.php';
-require '../PHPMailer/src/PHPMailer.php';
-require '../PHPMailer/src/SMTP.php';
+require 'PHPMailer/src/Exception.php';
+require 'PHPMailer/src/PHPMailer.php';
+require 'PHPMailer/src/SMTP.php';
 
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
@@ -59,12 +59,139 @@ try {
     $mail->isHTML(true);
     $mail->Subject = 'Nuova richiesta dal sito';
 
-    $body = '
+    if ($_POST['category'] === 'fashion') {
+        $body = '
         <!DOCTYPE html>
         <html>
         <head>
         <meta charset="UTF-8">
-        <title>Nuova richiesta dal sito</title>
+        <title>Nuova richiesta dal sito - MODA</title>
+        </head>
+        <body style="
+            margin:0;
+            padding:30px;
+            background-color:#080808;
+            font-family:Arial, sans-serif;
+            color:#f7f4ef;
+        ">
+
+            <table width="100%" cellpadding="0" cellspacing="0" border="0" style="max-width:650px;margin:auto;background:#111;border-radius:4px;border:1px solid #2a2a2a;">
+                
+                <tr>
+                    <td style="
+                        background:#111;
+                        color:#c9a96e;
+                        padding:30px 30px 20px 30px;
+                        font-size:22px;
+                        font-weight:bold;
+                        text-transform: uppercase;
+                        letter-spacing: 2px;
+                        border-bottom: 2px solid #c9a96e;
+                    ">
+                        Nuova richiesta dal sito - MODA
+                    </td>
+                </tr>
+
+                <tr>
+                    <td style="padding:30px;">
+
+                        <table width="100%" cellpadding="0" cellspacing="0" style="font-size:15px; line-height:1.6;">
+
+                            <tr>
+                                <td style="color:rgba(247, 244, 239, 0.45); padding:10px 0; width:140px; border-bottom:1px solid #2a2a2a;">
+                                    Nome
+                                </td>
+                                <td style="padding:10px 0; font-weight:600; color:#f7f4ef; border-bottom:1px solid #2a2a2a;">
+                                    ' . $first_name . '
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td style="color:rgba(247, 244, 239, 0.45); padding:10px 0; border-bottom:1px solid #2a2a2a;">
+                                    Cognome
+                                </td>
+                                <td style="padding:10px 0; font-weight:600; color:#f7f4ef; border-bottom:1px solid #2a2a2a;">
+                                    ' . $last_name . '
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td style="color:rgba(247, 244, 239, 0.45); padding:10px 0; border-bottom:1px solid #2a2a2a;">
+                                    Telefono
+                                </td>
+                                <td style="padding:10px 0; font-weight:600; color:#f7f4ef; border-bottom:1px solid #2a2a2a;">
+                                    ' . $phone . '
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td style="color:rgba(247, 244, 239, 0.45); padding:10px 0; border-bottom:1px solid #2a2a2a;">
+                                    Email
+                                </td>
+                                <td style="padding:10px 0; border-bottom:1px solid #2a2a2a;">
+                                    <a href="mailto:' . $email . '" style="color:#c9a96e;text-decoration:none;font-weight:600;">
+                                        ' . $email . '
+                                    </a>
+                                </td>
+                            </tr>
+
+                        </table>
+
+                        <div style="
+                            margin-top:40px;
+                            padding:20px;
+                            background:#080808;
+                            border:1px solid rgba(201, 169, 110, 0.3);
+                            border-radius:4px;
+                        ">
+                            <div style="
+                                color:#c9a96e;
+                                font-size: 12px;
+                                text-transform: uppercase;
+                                letter-spacing: 1px;
+                                font-weight:bold;
+                                margin-bottom:12px;
+                            ">
+                                Messaggio
+                            </div>
+
+                            <div style="
+                                color:#f7f4ef;
+                                white-space:pre-line;
+                                line-height:1.7;
+                            ">
+                                ' . $message . '
+                            </div>
+                        </div>
+
+                    </td>
+                </tr>
+
+                <tr>
+                    <td style="
+                        padding:25px 30px;
+                        border-top:1px solid #2a2a2a;
+                        color:rgba(247, 244, 239, 0.45);
+                        font-size:11px;
+                        text-align:center;
+                        letter-spacing: 0.5px;
+                    ">
+                        Questo messaggio è stato inviato automaticamente dal modulo contatti.
+                    </td>
+                </tr>
+
+            </table>
+
+        </body>
+        </html>
+        ';
+    } else {
+        $body = '
+        <!DOCTYPE html>
+        <html>
+        <head>
+        <meta charset="UTF-8">
+        <title>Nuova richiesta dal sito - WELLNESS</title>
         </head>
         <body style="
             margin:0;
@@ -85,7 +212,7 @@ try {
                         font-weight:bold;
                         border-radius:12px 12px 0 0;
                     ">
-                        Nuova richiesta dal sito
+                        Nuova richiesta dal sito  - WELLNESS
                     </td>
                 </tr>
 
@@ -187,6 +314,7 @@ try {
         </body>
         </html>
         ';
+    }
 
     $mail->Body = $body;
 

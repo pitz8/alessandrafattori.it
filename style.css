@@ -100,7 +100,7 @@
         background: var(--black);
         background-image: url("assets/fashion/work/10.webp");
         background-size: cover;
-        background-blend-mode: soft-light;
+        background-blend-mode: hard-light;
         background-position-x: center;
     }
 

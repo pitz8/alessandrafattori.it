@@ -3,7 +3,7 @@
 // CONFIG
 $gmail_username = "website.afattori@gmail.com";
 $gmail_app_password = "vait mlfm eiqr omcb";
-$send_to = "pietromambelli8@gmail.com";
+$send_to = "alessandrafattori02@gmail.com";
 
 // ONLY HANDLE POST
 if ($_SERVER["REQUEST_METHOD"] !== "POST") {

@@ -141,7 +141,6 @@
 
  /* Hero */
  .hero {
-   min-height: 100vh;
    display: flex;
    align-items: center;
    padding: 8rem 5% 5rem;

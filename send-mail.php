@@ -322,12 +322,14 @@ try {
 
     echo json_encode([
         "success" => true,
+        "color" => '#5fbb75',
         "message" => "Messaggio inviato con successo"
     ]);
 } catch (Exception $e) {
 
     echo json_encode([
         "success" => false,
+        "color" => '#b42e2e',
         "message" => "Errore invio email"
     ]);
 }

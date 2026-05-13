@@ -316,6 +316,7 @@
             const data = await response.json();
 
             result.innerHTML = data.message;
+            result.style.color = data.color;
 
             if (data.success) {
                 form.reset();

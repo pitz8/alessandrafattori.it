@@ -173,7 +173,7 @@
           <textarea name="message" placeholder="Livello di esperienza, obiettivi, domande..."></textarea>
         </div>
         <button type="submit" class="btn-book">Invia Richiesta</button>
-        <div id="form-result" style="color: var(--cream);"></div>
+        <div id="form-result"></div>
       </form>
     </div>
   </div>
@@ -307,15 +307,14 @@
             const data = await response.json();
 
             result.innerHTML = data.message;
+            result.style.color = data.color;
 
             if (data.success) {
                 form.reset();
             }
 
         } catch (error) {
-
             result.innerHTML = "Errore di connessione";
-
         }
     });
 

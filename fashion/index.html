@@ -378,7 +378,7 @@
       formData.append('category', 'fashion');
 
       try {
-        const response = await fetch('../send-mail.php', {
+        const response = await fetch('/api/send-mail.php', {
           method: 'POST',
           body: formData
         });

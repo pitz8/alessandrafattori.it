@@ -1,0 +1,6 @@
+# Mai caricare le credenziali locali su Vercel (verrebbero servite come file statico)
+mail-config.php
+mail-config.sample.php
+
+# Vecchi file di test non usati in produzione
+func

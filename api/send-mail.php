@@ -1,9 +1,22 @@
 <?php
 
-// CONFIG (credenziali in mail-config.php, escluso da git)
-$mail_config = @include __DIR__ . '/mail-config.php';
+// CONFIG
+// In produzione (Vercel): variabili d'ambiente impostate nel dashboard.
+// In locale: fallback su mail-config.php (escluso da git).
+$gmail_username = getenv('GMAIL_USERNAME');
+$gmail_app_password = getenv('GMAIL_APP_PASSWORD');
+$send_to = getenv('SEND_TO');
 
-if (!is_array($mail_config)) {
+if (!$gmail_username || !$gmail_app_password || !$send_to) {
+    $mail_config = @include __DIR__ . '/../mail-config.php';
+    if (is_array($mail_config)) {
+        $gmail_username = $mail_config['gmail_username'];
+        $gmail_app_password = $mail_config['gmail_app_password'];
+        $send_to = $mail_config['send_to'];
+    }
+}
+
+if (!$gmail_username || !$gmail_app_password || !$send_to) {
     http_response_code(500);
     echo json_encode([
         "success" => false,
@@ -12,10 +25,6 @@ if (!is_array($mail_config)) {
     ]);
     exit;
 }
-
-$gmail_username = $mail_config['gmail_username'];
-$gmail_app_password = $mail_config['gmail_app_password'];
-$send_to = $mail_config['send_to'];
 
 // ONLY HANDLE POST
 if ($_SERVER["REQUEST_METHOD"] !== "POST") {
@@ -40,9 +49,9 @@ if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
 }
 
 // LOAD PHPMailer
-require 'PHPMailer/src/Exception.php';
-require 'PHPMailer/src/PHPMailer.php';
-require 'PHPMailer/src/SMTP.php';
+require __DIR__ . '/../PHPMailer/src/Exception.php';
+require __DIR__ . '/../PHPMailer/src/PHPMailer.php';
+require __DIR__ . '/../PHPMailer/src/SMTP.php';
 
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;

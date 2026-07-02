@@ -1,9 +1,21 @@
 <?php
 
-// CONFIG
-$gmail_username = "website.afattori@gmail.com";
-$gmail_app_password = "vait mlfm eiqr omcb";
-$send_to = "alessandrafattori02@gmail.com";
+// CONFIG (credenziali in mail-config.php, escluso da git)
+$mail_config = @include __DIR__ . '/mail-config.php';
+
+if (!is_array($mail_config)) {
+    http_response_code(500);
+    echo json_encode([
+        "success" => false,
+        "color" => '#b42e2e',
+        "message" => "Configurazione email mancante"
+    ]);
+    exit;
+}
+
+$gmail_username = $mail_config['gmail_username'];
+$gmail_app_password = $mail_config['gmail_app_password'];
+$send_to = $mail_config['send_to'];
 
 // ONLY HANDLE POST
 if ($_SERVER["REQUEST_METHOD"] !== "POST") {

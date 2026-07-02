@@ -1,106 +1,111 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="it">
 
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Alessandra Fattori</title>
+  <title>Alessandra Fattori | Modella & Lezioni di Pilates e Yoga a Rimini</title>
+  <meta name="description"
+    content="Alessandra Fattori: modella professionista e insegnante di Pilates e Yoga a Rimini. Sfoglia il portfolio moda o scopri corsi, orari e prenotazioni delle lezioni.">
+  <link rel="canonical" href="https://alessandrafattori.it/">
+  <meta name="theme-color" content="#0c0b09">
+
+  <!-- Open Graph / Social -->
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="it_IT">
+  <meta property="og:url" content="https://alessandrafattori.it/">
+  <meta property="og:title" content="Alessandra Fattori | Modella & Pilates e Yoga a Rimini">
+  <meta property="og:description"
+    content="Un profilo, due anime: portfolio moda e lezioni di Pilates e Yoga a Rimini. Scegli il tuo percorso.">
+  <meta property="og:image" content="https://alessandrafattori.it/assets/fashion/hero/7.webp">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <link rel="icon"
+    href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230c0b09'/%3E%3Ctext x='32' y='42' font-family='Georgia,serif' font-size='30' fill='%23c6a15b' text-anchor='middle'%3EAF%3C/text%3E%3C/svg%3E">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link
-    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Jost:wght@200;300;400&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Outfit:wght@200;300;400;500&display=swap"
     rel="stylesheet">
   <link rel="stylesheet" href="style.css">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebSite",
+        "@id": "https://alessandrafattori.it/#website",
+        "url": "https://alessandrafattori.it/",
+        "name": "Alessandra Fattori",
+        "inLanguage": "it-IT"
+      },
+      {
+        "@type": "Person",
+        "@id": "https://alessandrafattori.it/#person",
+        "name": "Alessandra Fattori",
+        "url": "https://alessandrafattori.it/",
+        "jobTitle": ["Modella", "Insegnante di Pilates e Yoga"],
+        "knowsLanguage": ["it", "en"],
+        "homeLocation": {
+          "@type": "Place",
+          "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Rimini",
+            "addressRegion": "Emilia-Romagna",
+            "addressCountry": "IT"
+          }
+        },
+        "sameAs": ["https://www.instagram.com/alessandrafattori_/"]
+      }
+    ]
+  }
+  </script>
 </head>
 
 <body>
 
-  <div class="load-mask"></div>
-  <div class="grain"></div>
-  <div class="cursor" id="cursor"></div>
-  <div class="cursor-ring" id="cursorRing"></div>
+  <header class="brand">
+    <h1 class="brand-name">Alessandra Fattori</h1>
+    <p class="brand-tagline">Modella &middot; Insegnante di Pilates &amp; Yoga &middot; Rimini</p>
+  </header>
 
-  <div class="top-strip">
-    <span class="top-name">Alessandra Fattori</span>
-  </div>
+  <main class="split" aria-label="Scegli la sezione">
 
-  <div class="container">
-    <!-- Fashion -->
-    <a href="fashion/index.html" class="side fashion">
-      <div class="bg-shape"></div>
-      <div class="bg-shape bg-shape-2"></div>
-      <div class="hover-bar"></div>
-      <div class="side-content">
-        <span class="name-tag">Portfolio</span>
-        <h1>Moda</h1>
-        <span class="side-sub">Editoriale &amp; Misure</span>
-        <div class="arrow-cta">
-          <div class="arrow-line"></div>
-        </div>
-      </div>
-      <div class="corner-tag">Portfolio &amp; Contatti</div>
+    <!-- Moda -->
+    <a href="fashion/index.html" class="panel panel--fashion">
+      <span class="panel-bg" role="presentation"></span>
+      <span class="panel-veil" role="presentation"></span>
+      <span class="panel-content">
+        <span class="panel-kicker">Portfolio</span>
+        <span class="panel-title">Moda</span>
+        <span class="panel-sub">Editoriale &middot; Commerciale &middot; Misure &amp; Booking</span>
+        <span class="panel-cta">Entra nel portfolio<span class="panel-cta-arrow" aria-hidden="true">&rarr;</span></span>
+      </span>
     </a>
 
-    <div class="divider"></div>
-
-    <!-- Wellness -->
-    <a href="wellness/index.html" class="side wellness">
-      <div class="bg-shape"></div>
-      <div class="hover-bar"></div>
-      <div class="side-content">
-        <span class="name-tag">Studio</span>
-        <h1>Pilates &amp; Yoga</h1>
-        <span class="side-sub">Orari &amp; lezioni</span>
-        <div class="arrow-cta">
-          <div class="arrow-line"></div>
-        </div>
-      </div>
-      <div class="corner-tag">Lezioni di Pilates e Yoga <br> Informazioni &amp; Contatti</div>
+    <!-- Pilates & Yoga -->
+    <a href="wellness/index.html" class="panel panel--wellness">
+      <span class="panel-bg" role="presentation"></span>
+      <span class="panel-veil" role="presentation"></span>
+      <span class="panel-content">
+        <span class="panel-kicker">Studio</span>
+        <span class="panel-title">Pilates &amp; Yoga</span>
+        <span class="panel-sub">Corsi a Rimini &middot; Orari &amp; Lezioni &middot; Prova gratuita</span>
+        <span class="panel-cta">Scopri i corsi<span class="panel-cta-arrow" aria-hidden="true">&rarr;</span></span>
+      </span>
     </a>
-  </div>
+
+  </main>
+
+  <footer class="home-footer">
+    <span>&copy; <span id="year">2026</span> Alessandra Fattori &mdash; Rimini, Italia</span>
+    <a href="https://www.instagram.com/alessandrafattori_/" rel="noopener" target="_blank">Instagram</a>
+  </footer>
 
   <script>
-    const cursor = document.getElementById('cursor');
-    const ring = document.getElementById('cursorRing');
-    let mx = 0, my = 0, rx = 0, ry = 0;
-
-    // Check if device is touch-enabled
-    const isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
-
-    if (!isTouchDevice) {
-      document.addEventListener('mousemove', e => {
-        mx = e.clientX;
-        my = e.clientY;
-        cursor.style.left = mx + 'px';
-        cursor.style.top = my + 'px';
-      });
-
-      function animateRing() {
-        rx += (mx - rx) * 0.12;
-        ry += (my - ry) * 0.12;
-        ring.style.left = rx + 'px';
-        ring.style.top = ry + 'px';
-        requestAnimationFrame(animateRing);
-      }
-      animateRing();
-
-      document.querySelectorAll('a').forEach(el => {
-        el.addEventListener('mouseenter', () => {
-          cursor.style.width = '20px';
-          cursor.style.height = '20px';
-          ring.style.width = '70px';
-          ring.style.height = '70px';
-        });
-        el.addEventListener('mouseleave', () => {
-          cursor.style.width = '10px';
-          cursor.style.height = '10px';
-          ring.style.width = '40px';
-          ring.style.height = '40px';
-        });
-      });
-    } else {
-      // Completely remove cursor elements if on mobile
-      cursor.style.display = 'none';
-      ring.style.display = 'none';
-    }
+    document.getElementById('year').textContent = new Date().getFullYear();
   </script>
 </body>
 

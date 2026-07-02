@@ -1,486 +1,330 @@
-    *,
-    *::before,
-    *::after {
-        box-sizing: border-box;
-        margin: 0;
-        padding: 0;
-    }
-
-    :root {
-        --black: #0a0a0a;
-        --white: #f7f4ef;
-        --sage: #7a8c6e;
-        --sage-light: #c4ceba;
-        --gold: #c9a96e;
-    }
-
-    html,
-    body {
-        height: 100%;
-        overflow: hidden;
-        cursor: none;
-    }
-
-    /* Custom cursor */
-    .cursor {
-        position: fixed;
-        width: 10px;
-        height: 10px;
-        background: var(--gold);
-        border-radius: 50%;
-        pointer-events: none;
-        z-index: 9999;
-        transform: translate(-50%, -50%);
-        transition: transform 0.1s, width 0.3s, height 0.3s, opacity 0.3s;
-        mix-blend-mode: difference;
-    }
-
-    .cursor-ring {
-        position: fixed;
-        width: 40px;
-        height: 40px;
-        border: 1px solid rgba(201, 169, 110, 0.5);
-        border-radius: 50%;
-        pointer-events: none;
-        z-index: 9998;
-        transform: translate(-50%, -50%);
-        transition: transform 0.15s ease-out, width 0.4s, height 0.4s;
-    }
-
-    body:hover .cursor {
-        opacity: 1;
-    }
-
-    /* Container */
-    .container {
-        display: flex;
-        height: 100vh;
-        width: 100vw;
-        position: relative;
-    }
-
-    /* Divider line */
-    .divider {
-        position: absolute;
-        left: 50%;
-        top: 0;
-        bottom: 0;
-        width: 1px;
-        background: rgba(201, 169, 110, 0.4);
-        z-index: 10;
-        transform: scaleY(0);
-        transform-origin: top;
-        animation: dividerGrow 1.2s cubic-bezier(0.77, 0, 0.175, 1) 0.4s forwards;
-    }
-
-    @keyframes dividerGrow {
-        to {
-            transform: scaleY(1);
-        }
-    }
-
-    /* Sides */
-    .side {
-        flex: 1;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        text-decoration: none;
-        position: relative;
-        overflow: hidden;
-        transition: flex ease-in-out 0.75s
-    }
-
-    .side:hover {
-        flex: 1.15;
-    }
-
-    /* Fashion side */
-    .fashion {
-        background: var(--black);
-        background-image: url("assets/fashion/work/10.webp");
-        background-size: cover;
-        background-blend-mode: hard-light;
-        background-position-x: center;
-    }
-
-    /* Wellness side */
-    .wellness {
-        background: var(--white);
-        background-image: url("assets/wellness/gallery/bg.webp");
-        background-size: cover;
-        background-position-y: center;
-    }
-
-    /* Animated background shapes */
-    .bg-shape {
-        position: absolute;
-        border-radius: 50%;
-        pointer-events: none;
-        opacity: 0;
-        animation: shapeFloat 8s ease-in-out infinite;
-    }
-
-    .fashion .bg-shape {
-        width: 300px;
-        height: 300px;
-        border: 1px solid rgba(201, 169, 110, 0.08);
-        top: 10%;
-        left: 10%;
-        animation-delay: 1s;
-    }
-
-    .fashion .bg-shape-2 {
-        width: 200px;
-        height: 200px;
-        border: 1px solid rgba(201, 169, 110, 0.05);
-        bottom: 15%;
-        right: 15%;
-        animation-delay: 3s;
-    }
-
-    .wellness .bg-shape {
-        width: 350px;
-        height: 350px;
-        border: 1px solid rgba(122, 140, 110, 0.12);
-        bottom: 5%;
-        right: 5%;
-        animation-delay: 2s;
-    }
-
-    @keyframes shapeFloat {
-        0% {
-            opacity: 0;
-            transform: scale(0.8) rotate(0deg);
-        }
-
-        20% {
-            opacity: 1;
-        }
-
-        50% {
-            transform: scale(1.1) rotate(10deg);
-        }
-
-        80% {
-            opacity: 1;
-        }
-
-        100% {
-            opacity: 0;
-            transform: scale(0.8) rotate(20deg);
-        }
-    }
-
-    /* Content */
-    .side-content {
-        position: relative;
-        z-index: 2;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        gap: 1.5rem;
-        text-align: center;
-    }
-
-    /* Name on top - shared */
-    .name-tag {
-        font-family: 'Jost', sans-serif;
-        font-weight: 200;
-        font-size: 0.65rem;
-        letter-spacing: 5px;
-        text-transform: uppercase;
-        opacity: 0;
-        animation: fadeUp 1s ease 0.8s forwards;
-    }
-
-    .fashion .name-tag {
-        color: rgba(247, 244, 239, 0.4);
-    }
-
-    .wellness .name-tag {
-        color: rgba(74, 93, 78, 0.5);
-    }
-
-    /* Main title */
-    .side h1 {
-        font-family: 'Cormorant Garamond', serif;
-        font-weight: 300;
-        font-size: clamp(3rem, 6vw, 5.5rem);
-        letter-spacing: 8px;
-        text-transform: uppercase;
-        line-height: 1;
-        opacity: 0;
-        animation: fadeUp 1s ease 1s forwards;
-    }
-
-    .fashion h1 {
-        color: var(--white);
-    }
-
-    .wellness h1 {
-        color: #2c3e30;
-    }
-
-    /* Italic subtitle */
-    .side-sub {
-        font-family: 'Cormorant Garamond', serif;
-        font-style: italic;
-        font-weight: 300;
-        font-size: clamp(0.9rem, 1.5vw, 1.1rem);
-        opacity: 0;
-        animation: fadeUp 1s ease 1.2s forwards;
-    }
-
-    .fashion .side-sub {
-        color: var(--gold);
-    }
-
-    .wellness .side-sub {
-        color: var(--sage);
-    }
-
-    /* Arrow CTA */
-    .arrow-cta {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        gap: 8px;
-        opacity: 0;
-        animation: fadeUp 1s ease 1.5s forwards;
-    }
-
-    .arrow-line {
-        width: 1px;
-        height: 40px;
-        background: linear-gradient(to bottom, transparent, currentColor);
-        animation: arrowPulse 2s ease-in-out infinite 2s;
-    }
-
-    .fashion .arrow-line {
-        color: var(--gold);
-        background: linear-gradient(to bottom, transparent, var(--gold));
-    }
-
-    .wellness .arrow-line {
-        color: var(--sage);
-        background: linear-gradient(to bottom, transparent, var(--sage));
-    }
-
-    @keyframes arrowPulse {
-
-        0%,
-        100% {
-            opacity: 0.4;
-            transform: scaleY(1);
-        }
-
-        50% {
-            opacity: 1;
-            transform: scaleY(1.3);
-        }
-    }
-
-    /* Corner tag */
-    .corner-tag {
-        position: absolute;
-        font-family: 'Jost', sans-serif;
-        font-weight: 200;
-        font-size: 0.75rem;
-        letter-spacing: 3px;
-        text-transform: uppercase;
-        opacity: 0;
-        animation: fadeIn 1s ease 1.8s forwards;
-    }
-
-    .fashion .corner-tag {
-        color: rgba(247, 244, 239, 0.75);
-        bottom: 8%;
-        left: 8%;
-    }
-
-    .wellness .corner-tag {
-        color: rgba(74, 93, 78, 0.75);
-        bottom: 8%;
-        right: 8%;
-        text-align: right;
-    }
-
-    /* Hover reveal bar */
-    .hover-bar {
-        position: absolute;
-        bottom: 0;
-        left: 0;
-        right: 0;
-        height: 3px;
-        transform: scaleX(0);
-        transition: transform 0.5s cubic-bezier(0.77, 0, 0.175, 1);
-    }
-
-    .fashion .hover-bar {
-        background: var(--gold);
-    }
-
-    .wellness .hover-bar {
-        background: var(--sage);
-    }
-
-    .side:hover .hover-bar {
-        transform: scaleX(1);
-    }
-
-    /* Top name strip */
-    .top-strip {
-        position: fixed;
-        top: 0;
-        left: 0;
-        right: 0;
-        z-index: 100;
-        display: flex;
-        justify-content: center;
-        padding: 1.5rem;
-        pointer-events: none;
-        background: linear-gradient(rgb(0, 0, 0) 0%, #0000 92%);
-    }
-
-    .top-name {
-        font-family: 'Cormorant Garamond', serif;
-        font-weight: 300;
-        letter-spacing: 8px;
-        text-transform: uppercase;
-        color: var(--gold);
-        opacity: 0;
-        animation: fadeIn 1.5s ease 2s forwards;
-        mix-blend-mode: difference;
-        filter: invert(0);
-    }
-
-    @keyframes fadeUp {
-        from {
-            opacity: 0;
-            transform: translateY(20px);
-        }
-
-        to {
-            opacity: 1;
-            transform: translateY(0);
-        }
-    }
-
-    @keyframes fadeIn {
-        from {
-            opacity: 0;
-        }
-
-        to {
-            opacity: 1;
-        }
-    }
-
-    /* Grain overlay */
-    .grain {
-        position: fixed;
-        inset: 0;
-        pointer-events: none;
-        z-index: 50;
-        opacity: 0.025;
-        background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
-    }
-
-    /* Page load mask */
-    .load-mask {
-        position: fixed;
-        inset: 0;
-        background: var(--black);
-        z-index: 200;
-        animation: maskReveal 1s cubic-bezier(0.77, 0, 0.175, 1) 0.1s forwards;
-    }
-
-    @keyframes maskReveal {
-        to {
-            transform: translateY(-100%);
-        }
-    }
-
-    @media (max-width: 900px) {
-
-        html,
-        body {
-            overflow: auto;
-            cursor: auto;
-        }
-
-        /* Allow scrolling if content overflows */
-
-        .container {
-            flex-direction: column;
-            height: auto;
-            min-height: 100vh;
-        }
-
-        .side {
-            padding: 4rem 1rem;
-            /* Give content space on mobile */
-            min-height: 50vh;
-            flex: 1;
-        }
-
-        /* Adjust Divider for Vertical Layout */
-        .divider {
-            width: 100%;
-            height: 1px;
-            left: 0;
-            top: 50%;
-            transform: scaleX(0);
-            transform-origin: left;
-        }
-
-        @keyframes dividerGrow {
-            to {
-                transform: scaleX(1);
-            }
-        }
-
-        /* Typography Refinements */
-        .side h1 {
-            font-size: clamp(2.5rem, 12vw, 4rem);
-            letter-spacing: 4px;
-        }
-
-        .side-sub {
-            font-size: 1rem;
-        }
-
-        /* Hide custom cursor on mobile/tablet */
-        .cursor,
-        .cursor-ring {
-            display: none;
-        }
-
-        .side:hover {
-            flex: 1;
-            /* Disable the flex-expansion on mobile for better stability */
-        }
-
-        /* Adjust Corner Tags */
-        .corner-tag {
-            bottom: 2rem;
-            left: 0;
-            right: 0;
-            text-align: center !important;
-            width: 100%;
-        }
-
-        .top-strip {
-            padding: 1rem;
-            background: rgba(0, 0, 0, 0.1);
-            backdrop-filter: blur(5px);
-        }
-    }
-
-    /* Specific Tablet Optimization */
-    @media (min-width: 600px) and (max-width: 900px) {
-        .side {
-            min-height: 50vh;
-        }
-    }
+/* ============================================================
+   Alessandra Fattori — Home (split landing)
+   Mobile-first · two identities: Moda (dark/gold) & Wellness (cream/sage)
+   ============================================================ */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  /* Moda */
+  --ink: #0c0b09;
+  --ivory: #f5f1ea;
+  --gold: #c6a15b;
+  /* Wellness */
+  --cream: #faf7f2;
+  --forest: #2f4432;
+  --sage: #7c8f74;
+  --terracotta: #c2764f;
+
+  --serif: 'Cormorant Garamond', Georgia, serif;
+  --sans: 'Outfit', system-ui, sans-serif;
+}
+
+html {
+  height: 100%;
+}
+
+body {
+  min-height: 100svh;
+  display: flex;
+  flex-direction: column;
+  font-family: var(--sans);
+  background: var(--ink);
+  color: var(--ivory);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ---------- Brand header ---------- */
+.brand {
+  padding: 1.4rem 1.25rem 1.1rem;
+  text-align: center;
+  animation: fadeDown 0.9s ease both;
+}
+
+.brand-name {
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: clamp(1.35rem, 4.5vw, 1.8rem);
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  color: var(--ivory);
+  text-indent: 0.35em; /* compensa il letter-spacing per centrare */
+}
+
+.brand-tagline {
+  margin-top: 0.45rem;
+  font-size: 0.62rem;
+  font-weight: 300;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+
+/* ---------- Split panels ---------- */
+.split {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.panel {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: max(300px, 38svh);
+  padding: 3rem 1.5rem;
+  overflow: hidden;
+  text-decoration: none;
+  isolation: isolate;
+  animation: panelIn 1s ease both;
+}
+
+.panel--wellness {
+  animation-delay: 0.15s;
+}
+
+.panel-bg {
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+  background-size: cover;
+  background-position: center;
+  transform: scale(1.03);
+  transition: transform 1.2s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.panel--fashion .panel-bg {
+  background-image: url("assets/fashion/work/10.webp");
+  background-position: center 25%;
+}
+
+.panel--wellness .panel-bg {
+  background-image: url("assets/wellness/gallery/bg.webp");
+}
+
+.panel-veil {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  transition: background 0.6s ease;
+}
+
+.panel--fashion .panel-veil {
+  background: linear-gradient(160deg, rgba(12, 11, 9, 0.82) 0%, rgba(12, 11, 9, 0.55) 100%);
+}
+
+.panel--wellness .panel-veil {
+  background: linear-gradient(160deg, rgba(250, 247, 242, 0.88) 0%, rgba(250, 247, 242, 0.62) 100%);
+}
+
+.panel-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.8rem;
+  text-align: center;
+}
+
+.panel-kicker {
+  font-size: 0.58rem;
+  font-weight: 300;
+  letter-spacing: 0.45em;
+  text-transform: uppercase;
+}
+
+.panel--fashion .panel-kicker {
+  color: var(--gold);
+}
+
+.panel--wellness .panel-kicker {
+  color: var(--terracotta);
+}
+
+.panel-title {
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: clamp(2.6rem, 9vw, 4.8rem);
+  line-height: 1.05;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.panel--fashion .panel-title {
+  color: var(--ivory);
+}
+
+.panel--wellness .panel-title {
+  color: var(--forest);
+}
+
+.panel-sub {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: clamp(0.95rem, 2.8vw, 1.15rem);
+  font-weight: 300;
+}
+
+.panel--fashion .panel-sub {
+  color: rgba(245, 241, 234, 0.85);
+}
+
+.panel--wellness .panel-sub {
+  color: var(--sage);
+}
+
+.panel-cta {
+  margin-top: 1.2rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.85rem 1.7rem;
+  font-size: 0.6rem;
+  font-weight: 400;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  border-radius: 999px;
+  transition: background 0.35s ease, color 0.35s ease, transform 0.35s ease;
+}
+
+.panel--fashion .panel-cta {
+  color: var(--gold);
+  border: 1px solid rgba(198, 161, 91, 0.55);
+}
+
+.panel--wellness .panel-cta {
+  color: var(--forest);
+  border: 1px solid rgba(47, 68, 50, 0.4);
+}
+
+.panel-cta-arrow {
+  transition: transform 0.35s ease;
+}
+
+/* Hover / focus states */
+.panel:hover .panel-bg,
+.panel:focus-visible .panel-bg {
+  transform: scale(1.09);
+}
+
+.panel--fashion:hover .panel-cta,
+.panel--fashion:focus-visible .panel-cta {
+  background: var(--gold);
+  color: var(--ink);
+}
+
+.panel--wellness:hover .panel-cta,
+.panel--wellness:focus-visible .panel-cta {
+  background: var(--forest);
+  color: var(--cream);
+}
+
+.panel:hover .panel-cta-arrow {
+  transform: translateX(4px);
+}
+
+.panel:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: -4px;
+}
+
+/* ---------- Footer ---------- */
+.home-footer {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 1.5rem;
+  align-items: center;
+  justify-content: center;
+  padding: 1.1rem 1.25rem;
+  font-size: 0.6rem;
+  font-weight: 300;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(245, 241, 234, 0.45);
+  background: var(--ink);
+}
+
+.home-footer a {
+  color: var(--gold);
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+.home-footer a:hover {
+  color: var(--ivory);
+}
+
+/* ---------- Animations ---------- */
+@keyframes fadeDown {
+  from {
+    opacity: 0;
+    transform: translateY(-14px);
+  }
+
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes panelIn {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* ============================================================
+   Desktop: side-by-side split
+   ============================================================ */
+@media (min-width: 900px) {
+  body {
+    height: 100svh;
+    overflow: hidden;
+  }
+
+  .brand {
+    padding: 1.8rem 2rem 1.4rem;
+  }
+
+  .split {
+    flex-direction: row;
+    min-height: 0;
+  }
+
+  .panel {
+    flex: 1;
+    min-height: 0;
+    transition: flex 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .panel:hover {
+    flex: 1.25;
+  }
+
+  /* sottile linea divisoria dorata */
+  .panel--wellness {
+    border-left: 1px solid rgba(198, 161, 91, 0.35);
+  }
+}

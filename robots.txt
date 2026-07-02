@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+Disallow: /func/
+Disallow: /PHPMailer/
+Disallow: /send-mail.php
+
+Sitemap: https://alessandrafattori.it/sitemap.xml
